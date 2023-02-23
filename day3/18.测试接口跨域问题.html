@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+    <button id="btnGet">GET</button>
+    <button id="btnPost">POST</button>
+    <button id="btnDelete">DELETE</button>
+    <button id="btnJsonp">Jsonp</button>
+    <script>
+        $(function() {
+            // 发起get请求
+            $('#btnGet').on('click', function() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http:127.0.0.1/api/get',
+                    data: {
+                        name: 'zs',
+                        age: 18,
+                        sex: '男'
+                    },
+                    success: function(res) {
+                        console.log(res);
+                    }
+                })
+            })
+
+            // 发起post请求
+            $('#btnPost').on('click', function() {
+                $.post({
+                    type: 'POST',
+                    url: 'http://127.0.0.1/api/post',
+                    data: {
+                        bookName: '水浒传',
+                        author: '施耐庵'
+                    },
+                    success: function(res) {
+                        console.log(res);
+                    }
+                })
+            })
+            $('#btnDelete').on('click', function() {
+                    // 发起delete 请求
+                    $.ajax({
+                        type: 'delete',
+                        url: 'http://127.0.0.1/api/delete',
+                        success: function(res) {
+                            console.log(res);
+                        }
+                    })
+                })
+                // 发起json格式的请求
+            $("#btnJsonp").on('click', function() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://127.0.0.1/api/jsonp',
+                    dataType: 'jsonp',
+                    success: function(res) {
+                        console.log(res);
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
